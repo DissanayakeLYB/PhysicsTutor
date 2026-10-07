@@ -14,13 +14,15 @@ dist-ssr
 # Freebuff workspace metadata
 .freebuff/
 
-# Python (backend + data-extraction)
+# Python (backend)
 __pycache__/
 *.py[cod]
 .venv/
 venv/
 .pytest_cache/
 
-# Data extraction: input papers are large binaries, usually copyrighted
-# (their extracted questions in `questions database.json` stay trackable)
-data-extraction/input-pdfs/*.pdf
+# Data extraction: a local-only tool, deliberately kept out of the shared repo
+# (the input papers are large, usually copyrighted, and this tool is not part of
+# the app). `questions database.json` in the project root stays trackable if you
+# ever do want to share the extracted output.
+data-extraction/
