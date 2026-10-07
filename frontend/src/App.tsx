@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { send, type ChatMessage } from "@/lib/api";
+import { send, toChatTurns, type ChatMessage } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
 const createId = () => `m_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
@@ -52,13 +52,18 @@ export default function App() {
     setIsSending(true);
 
     try {
-      const reply = await send(text);
+      // `messages` is still the conversation without this turn, so it is exactly
+      // the history the backend wants; the new message goes in on its own.
+      const reply = await send(text, toChatTurns(messages));
       addMessage({ id: createId(), role: "tutor", content: reply });
-    } catch {
+    } catch (error) {
       addMessage({
         id: createId(),
         role: "tutor",
-        content: "I couldn't reach the tutor service just now. Check your connection and try again.",
+        content:
+          error instanceof Error && error.message
+            ? `Sorry, I couldn't answer that: ${error.message}`
+            : "I couldn't reach the tutor service just now. Check your connection and try again.",
         error: true,
       });
     } finally {

@@ -9,6 +9,14 @@ dist-ssr
 .DS_Store
 .vite
 *.tsbuildinfo
+*.log
 
 # Freebuff workspace metadata
 .freebuff/
+
+# Python (backend)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/

@@ -1,0 +1,6 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-dotenv>=1.0
+# Official Google Gen AI SDK. The older `google-generativeai` package is
+# deprecated, so this is the one to use with the Gemini API.
+google-genai>=2.0,<3.0
