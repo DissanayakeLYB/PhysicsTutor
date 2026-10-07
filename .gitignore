@@ -14,9 +14,13 @@ dist-ssr
 # Freebuff workspace metadata
 .freebuff/
 
-# Python (backend)
+# Python (backend + data-extraction)
 __pycache__/
 *.py[cod]
 .venv/
 venv/
 .pytest_cache/
+
+# Data extraction: input papers are large binaries, usually copyrighted
+# (their extracted questions in `questions database.json` stay trackable)
+data-extraction/input-pdfs/*.pdf
