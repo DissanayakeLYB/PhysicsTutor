@@ -59,7 +59,9 @@ export async function send(message: string, history: ChatTurn[] = []): Promise<s
       body: JSON.stringify({ message, history }),
     });
   } catch {
-    throw new Error(`could not reach the tutor service at ${API_URL}.`);
+    throw new Error(
+      `could not reach the tutor service at ${API_URL} — is the backend running? (see backend/README.md)`,
+    );
   }
 
   const payload: unknown = await response.json().catch(() => null);

@@ -19,6 +19,10 @@ cp .env.example .env              # then paste your key into .env
 uvicorn main:app --reload --port 8000
 ```
 
+If the chat shows *"could not reach the tutor service at http://localhost:8000"*, this
+server is simply not running (or is on another port) — that message comes from the
+browser failing to connect, not from this app.
+
 The API is then at <http://localhost:8000> and interactive docs at
 <http://localhost:8000/docs>.
 
